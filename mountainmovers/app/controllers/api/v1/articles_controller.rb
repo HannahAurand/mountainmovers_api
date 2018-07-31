@@ -33,6 +33,7 @@ module Api
                 else
                     render json: {status: 'ERROR', message: 'ARTICLE NOT UPDATED', data:article.errors}, status: :unprocessable_entity
                 end
+                
             end
 
             private

@@ -4,3 +4,10 @@
         body: Faker::Lorem.sentence
     })
 end
+
+5.times do 
+    Identity.create({
+        title: Faker::Book.title,
+        body: Faker::Lorem.sentence
+    })
+end
