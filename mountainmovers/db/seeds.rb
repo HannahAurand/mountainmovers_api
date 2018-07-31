@@ -13,7 +13,7 @@ end
 end
 
 5.times do
-    Identity.create({
+    Value.create({
         title: Faker::Book.title,
         body: Faker::Lorem.sentence
     })
