@@ -7,9 +7,16 @@ module Api
         end
 
         def show
+            teammembers = Teammembers.find(params[:id])
+            render json: {status: 'SUCCESS', message: 'Loaded team members', data:teammember}, status: :ok
         end
 
         def create
+            teammember = Teammember.new(teammember_params)
+            if teammember.save
+                render json: {status: 'SUCCESS', message: 'Created team member', data:teammember}, status: :ok
+            else
+                render json: {status: 'ERROR', message: 'Team Member not saved', data:teammember.errors}, status: :unprocessable_entity
         end
 
         def destroy
@@ -21,7 +28,7 @@ module Api
         private
 
         def teammember_params
-            params.permit(:name, :role, :description, :image)
+            params.permit(:name, :role, :description, :image, :picture)
         end
 
     end
