@@ -20,9 +20,18 @@ module Api
         end
 
         def destroy
+            teammember = Teammember.find(params[:id])
+            teammember.destroy
+            render json: {status: 'SUCCESS', message: 'DELETED TEAMMEMBER INFO SUCCESSFULLY', data:teammember}, status: :ok
         end
 
         def update
+            teammember = Teammember.find(params[:id])
+                if teammember.update_attributes(teammember_params)
+                    render json: {status: 'SUCCESS', message: 'UPDATED teammember', data:teammember}, status: :ok
+                else
+                    render json: {status: 'ERROR', message: 'teammember NOT UPDATED', data:teammember.errors}, status: :unprocessable_entity
+                end
         end
 
         private
