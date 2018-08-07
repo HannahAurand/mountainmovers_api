@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :articles
       resources :identities
       resources :values
+      resources :teammembers
     end
   end
 end
