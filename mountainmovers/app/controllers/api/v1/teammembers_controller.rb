@@ -13,6 +13,8 @@ module Api
 
             def create
                 teammember = Teammember.new(teammember_params)
+                teammember.picture = params[:file]
+
                 if teammember.save
                     render json: {status: 'SUCCESS', message: 'Created team member', data:teammember}, status: :ok
                 else
